@@ -1,0 +1,26 @@
+﻿@model ProvinceModel
+@{
+    ViewData["Title"] = "Create Province";
+}
+<h4 class="text-center">Create Province</h4>
+<hr />
+@if (ViewBag.Succeeded != null)
+{
+    <h4 class="text-center alert alert-success alert-heading"> @ViewBag.Succeeded</h4>
+}
+<form asp-action="CreateProvince" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example1">City Name</label>
+                <input asp-for="ProvinceName" placeholder="Province Name" required id="form3Example1" class="form-control" />
+
+                <span asp-validation-for="ProvinceName" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+</form>
+

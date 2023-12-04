@@ -1,0 +1,106 @@
+﻿@model PharmacModelRegiser
+<h4 class="text-center">Register Pharmacy</h4>
+<hr />
+<a href="~/lib/jquery/dist/jquery.min.map">~/lib/jquery/dist/jquery.min.map</a>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<form asp-action="Pharmacy" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example1">Pharmac Name</label>
+                <input asp-for="PharmacName" required id="form3Example1" class="form-control" />
+
+                <span asp-validation-for="PharmacName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example2">Email</label>
+                <input asp-for="Email" required id="form3Example2" class="form-control" />
+
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example1">Fax Number</label>
+                <input asp-for="FaxNumber" required id="form3Example1" class="form-control" />
+
+                <span asp-validation-for="FaxNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example2">Tell Number</label>
+                <input asp-for="TellNumber" required id="form3Example2" class="form-control" />
+
+                <span asp-validation-for="TellNumber" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example1">Address Line 1</label>
+                <input asp-for="AddressLine1" required id="form3Example1" class="form-control" />
+
+                <span asp-validation-for="AddressLine1" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example2">Address Line 2</label>
+                <input asp-for="AddressLine2" required id="form3Example2" class="form-control" />
+
+                <span asp-validation-for="AddressLine2" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Suburb</label>
+        <input asp-for="SuburbName" required id="form3Example3" class="form-control" />
+        <span asp-validation-for="SuburbName" class="text-danger"></span>
+    </div>
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Pos tCode</label>
+        <input asp-for="PostCode" required id="form3Example3" class="form-control" />
+        <span asp-validation-for="PostCode" class="text-danger"></span>
+    </div>
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Province</label>
+        <span> <select required asp-for="ProvinceId" id="ProvinceId" class="alert alert-primary small" asp-items=" ViewBag.ProvinceId"></select></span>
+        <span asp-validation-for="Email" class="text-danger"></span>
+
+    </div>
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">City</label>
+        <span> <select asp-for="CityId" id="CityId" class="alert alert-primary small" asp-items="@(new SelectList(string.Empty,"Value","Text"))"></select></span>
+        <span asp-validation-for="CityId" class="text-danger"></span>
+
+    </div>
+
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+</form>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#ProvinceId').change(function () {
+            var ddlsourse = "#ProvinceId";
+            $.getJSON("/Account/GetTypeById", { id: $(ddlsourse).val() }, function (data) {
+                var items = '';
+                $("#CityId").empty();
+                $.each(data, function (i, Cate) {
+                    items += "<option value=" + Cate.value + ">" + Cate.text + "</option>";
+                });
+                $('#CityId').html(items);
+            });
+        });
+    });
+</script>

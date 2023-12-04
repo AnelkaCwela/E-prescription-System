@@ -1,0 +1,78 @@
+﻿@model MedicationModel
+@{
+    ViewData["Title"] = "Create Medication ";
+}
+<h4 class="text-center">Create Medication </h4>
+<hr />
+@if (ViewBag.Data != null)
+{
+    <h4 class="text-center alert alert-success alert-heading"> @ViewBag.Data</h4>
+}
+<form asp-action="CreateMedication" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example1">Medication Name</label>
+                <input asp-for="MedicationName" placeholder="Medication Name" required id="form3Example1" class="form-control" />
+
+                <span asp-validation-for="MedicationName" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example1">Schedule</label>
+                <input asp-for="Schedule" required id="form3Example1" class="form-control" />
+
+                <span asp-validation-for="Schedule" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example1">Uses</label>
+                <input asp-for="Uses" placeholder="Uses" required id="form3Example1" class="form-control" />
+
+                <span asp-validation-for="Uses" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example1">Direction</label>
+                <input asp-for="Direction" required id="form3Example1" class="form-control" />
+
+                <span asp-validation-for="Direction" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example1">Warnings</label>
+                <input asp-for="Warnings" placeholder="Uses" required id="form3Example1" class="form-control" />
+
+                <span asp-validation-for="Warnings" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">DosageForm</label>
+        <span> <select required asp-for="DosageFormId" id="DoctorSpecializationId" class="alert alert-primary small" asp-items=" ViewBag.DosageFormId"></select></span>
+        <span asp-validation-for="DosageFormId" class="text-danger"></span>
+
+    </div>
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Medication Category</label>
+        <span> <select required asp-for="MedicationCategoryId" id="DoctorSpecializationId" class="alert alert-primary small" asp-items=" ViewBag.MedicationCategoryId"></select></span>
+        <span asp-validation-for="MedicationCategoryId" class="text-danger"></span>
+
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+</form>

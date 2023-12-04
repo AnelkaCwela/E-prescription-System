@@ -1,0 +1,39 @@
+﻿@model MedicationActiveIngredienceModel
+@{
+    ViewData["Title"] = "Create Medication Active Ingredience";
+}
+<h4 class="text-center">Create Medication Active Ingredience</h4>
+<hr />
+@if (ViewBag.Data != null)
+{
+    <h4 class="text-center alert alert-success alert-heading"> @ViewBag.Data</h4>
+}
+<form asp-action="CreateMedicationActiveIngredience" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example1">Active Ingredient Strengtht</label>
+                <input asp-for="ActiveIngredientStrength" placeholder="Active Ingredient Strengtht" required id="form3Example1" class="form-control" />
+
+                <span asp-validation-for="ActiveIngredientStrength" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Active Ingredient</label>
+        <span> <select required asp-for="ActiveIngredientId" id="DoctorSpecializationId" class="alert alert-primary small" asp-items=" ViewBag.ActiveIngredientId"></select></span>
+        <span asp-validation-for="ActiveIngredientId" class="text-danger"></span>
+
+    </div>
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Medication</label>
+        <span> <select required asp-for="MedicationId" id="DoctorSpecializationId" class="alert alert-primary small" asp-items=" ViewBag.MedicationId"></select></span>
+        <span asp-validation-for="MedicationId" class="text-danger"></span>
+
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+</form>
+

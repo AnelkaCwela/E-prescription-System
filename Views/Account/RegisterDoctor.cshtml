@@ -1,0 +1,58 @@
+﻿@model DoctorRegisterModel
+@{
+    ViewData["Title"] = "Register Doctor";
+}
+<h4 class="text-center">Register Doctor</h4>
+<hr />
+
+<form asp-action="RegisterDoctor" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example1">First name</label>
+                <input asp-for="FirstName" placeholder="First Name" required id="form3Example1" class="form-control" />
+
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example2">Last name</label>
+                <input asp-for="LastName" placeholder="Last Name" required id="form3Example2" class="form-control" />
+
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+        <div class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Doctor Specialization</label>
+        <span> <select required asp-for="DoctorSpecializationId" id="DoctorSpecializationId" class="alert alert-primary small" asp-items=" ViewBag.DoctorSpecializationId"></select></span>
+        <span asp-validation-for="DoctorSpecializationId" class="text-danger"></span>
+            
+        </div>
+
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Medical Prectise</label>
+        <span> <select required asp-for="MedicalPrectiseId" id="MedicalPrectiseId" class="alert alert-primary small" asp-items=" ViewBag.MedicalPrectiseId"></select></span>
+        <span asp-validation-for="MedicalPrectiseId" class="text-danger"></span>
+
+    </div>
+
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Email address</label>
+        <input asp-for="Email" placeholder="Email Address" required id="form3Example3" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Cell Number</label>
+        <input asp-for="CellNumber" placeholder="Cell Number" required id="form3Examle3" class="form-control" />
+        <span asp-validation-for="CellNumber" class="text-danger"></span>
+    </div>
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+</form>
+
+

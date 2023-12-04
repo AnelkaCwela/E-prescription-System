@@ -1,0 +1,152 @@
+﻿@model PatientDetialViewModel
+
+    <section style="background-color: #eee;">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col">
+                    <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item active" aria-current="page">Patient Profile</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <img src="https://www.directive.com/images/easyblog_shared/July_2018/7-4-18/totw_network_profile_400.jpg" alt="avatar"
+                                 class="rounded-circle img-fluid" style="width: 150px;">
+                            <h5 class="my-3">@Model.patientUserModel.FirstName @Model.patientUserModel.LastName</h5>
+                            <p class="text-muted mb-1">Patient Information</p>
+                            <p class="text-muted mb-4">@Model.patientUserModel.AddressLine1, @Model.patientUserModel.AddressLine2, @Model.patientUserModel.SuburbName</p>
+                            <div class="d-flex justify-content-center mb-2">
+                                <a asp-action="Index" asp-controller="Doctor" class="btn btn-primary">Load prescription</a>@if (ViewBag.Data != null)
+                                {
+                                    <div class="alert alert-success alert-success fade show">
+                                        <strong>@ViewBag.Data</strong>
+                                    </div>
+                                }
+                                <a asp-action="CurrentVist" asp-controller="Doctor" class="btn btn-outline-primary ms-1">Capture current Visit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-4 mb-lg-0">
+                        <div class="card-body p-0">
+                            <ul class="list-group list-group-flush rounded-3">
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                    <p class="mb-4">Current Medication</p>
+                                </li>
+                                @if (Model.patientMedication.Any())
+                                {
+                                    foreach (var data in Model.patientMedication)
+                                    {
+                                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">     
+                                            <p class="mb-0">@data.MedicationName</p>
+                                        </li>
+                                    }
+                                }
+                                else
+                                {
+                                  <li class="mb-4">No Medication Found</li>
+                                }
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Full Name</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">@Model.patientUserModel.FirstName &nbsp;&nbsp; @Model.patientUserModel.LastName</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Email</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">@Model.patientUserModel.Email</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Phone</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">@Model.patientUserModel.CellNumber</p>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Address</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">@Model.patientUserModel.AddressLine1, @Model.patientUserModel.AddressLine2, @Model.patientUserModel.SuburbName ,@Model.patientUserModel.PostCode</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-4 mb-md-0">
+                                <div class="card-body">
+                                    <p class="mb-4">
+                                        <span class="text-primary font-italic me-1">Patient</span>Allergies
+                                    </p>
+                                    @if (Model.activeIngredientModels.Any())
+                                    {
+                                        foreach (var data in Model.activeIngredientModels)
+                                        {
+                                            <p class="mb-1" style="font-size: .77rem;">@data.ActiveIngredientName</p>
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <p class="mb-4">No Allergies Found</p>
+                                    }
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-4 mb-md-0">
+                                <div class="card-body">
+                                    <p class="mb-4">
+                                        <span class="text-primary font-italic me-1">Patient</span> Medication History
+                                    </p>
+                                    @if (Model.diagonosisModels.Any())
+                                    {
+                                        foreach (var data in Model.diagonosisModels)
+                                        {
+                                            <p class="mb-1" style="font-size: .77rem;">@data.DiagonosisDescription</p>
+                                        }
+                                    }
+                                    else
+                                    {
+                                     <p class="mb-4">No diagonosis Found</p>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

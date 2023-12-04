@@ -1,0 +1,26 @@
+﻿@model GanderModel
+@{
+    ViewData["Title"] = "Create Gander";
+}
+
+<h4 class="text-center">Create Gander</h4>
+@if (ViewBag.Succeeded != null)
+{
+    <h4 class="text-center alert alert-success alert-heading"> @ViewBag.Succeeded</h4>
+}
+<hr />
+<form asp-action="CreateGander" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example1">Gander Name</label>
+                <input asp-for="GanderName" placeholder="Gander Name" required id="form3Example1" class="form-control" />
+
+                <span asp-validation-for="GanderName" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+</form>

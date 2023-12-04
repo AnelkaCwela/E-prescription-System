@@ -1,0 +1,32 @@
+﻿@model UserDetailModel
+<h4 class="text-center">Registration</h4>
+<hr />
+
+<form>
+    <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-Id="Id" asp-controller="Account">Edit</a>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example1">First name</label>
+                <input asp-for="FirstName" placeholder="First Name"   disabled id="form3Example1" class="form-control" />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example2">Last name</label>
+                <input asp-for="LastName" placeholder="Last Name" disabled id="form3Example2" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Email address</label>
+        <input asp-for="Email" placeholder="Email Address" disabled id="form3Example3" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Cell Number</label>
+        <input asp-for="CellNumber" placeholder="Cell Number" disabled id="form3Examle3" class="form-control" />
+        <span asp-validation-for="CellNumber" class="text-danger"></span>
+    </div>
+</form>

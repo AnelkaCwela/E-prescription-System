@@ -1,0 +1,43 @@
+﻿@model AllergyModel
+@{
+    ViewData["Title"] = "Allergy ";
+}
+<h4 class="text-center">Add Allergy</h4>
+@if (ViewBag.Allergy != null)
+{
+    <h4 class="text-center alert alert-success alert-heading"> @ViewBag.Allergy</h4>
+}
+<hr />
+<form asp-action="Allergy" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="PatientId" />
+
+    <div class="card mb-3">
+        <div class="card-header">
+            Patient Details
+        </div>
+        <div class="card-body">
+            <h5> Patient Name :@ViewBag.Name</h5>
+        </div>
+        <div class="card-body">
+            <h5> Patient Surname :@ViewBag.Surname</h5>
+        </div>
+        <div class="card-body">
+            <h5> Patient Identity Number :@ViewBag.Identity</h5>
+        </div>
+        <div class="card-footer">
+            <a asp-controller="Doctor" asp-action="MedicalHistory" class="btn btn-info" asp-route-Id="@Model.PatientId"> Add  Medical History</a> |
+            |
+            <a asp-action="prescription" asp-controller="Doctor" class="btn btn-primary"  asp-route-Id="@Model.PatientId">Load prescription</a>
+        </div>
+    </div>
+
+
+    <div class="dropdown">
+        <label class="form-label" for="form3Example3">Active Ingredient</label>
+        <span> <select required asp-for="ActiveIngredientId" id="DoctorSpecializationId" class="dropdown-item alert alert-primary small" asp-items=" ViewBag.ActiveIngredientId"></select></span>
+        <span asp-validation-for="ActiveIngredientId" class="text-danger"></span>
+    </div>
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+</form>
